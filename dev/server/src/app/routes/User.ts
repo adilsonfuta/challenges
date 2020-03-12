@@ -5,7 +5,7 @@ const routes = Router()
 
 routes.get('/', UserController.list)
 routes.post('/', UserController.create)
-routes.get('/:id', UserController.list)
+routes.get('/:id', UserController.index)
 routes.put('/:id', UserController.update)
 routes.delete('/:id', UserController.delete)
 
