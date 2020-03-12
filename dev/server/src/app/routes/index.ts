@@ -1,7 +1,8 @@
 import fs from 'fs'
+import { Application } from 'express'
 import { resolve } from 'path'
 
-module.exports = app => {
+module.exports = (app:Application) => {
   fs
     .readdirSync(__dirname)
     .filter((file:string) => ((file.indexOf('.')) !== 0 && (file !== 'index.ts')))

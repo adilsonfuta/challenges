@@ -13,8 +13,13 @@ class UserController implements Crud<User> {
     }
   }
 
-  public async create (req: Request, res: Response): Promise<Response<User>> {
-    return res.send()
+  public async create (req: Request, res: Response): Promise<Response<User>>  {
+    try {
+      const user = await UserModel.create(req.body)
+      return res.json(user)
+    }catch(err){
+      return res.status(400).send({ message: 'Erro ao cadastrar o usuário' })
+    }
   }
 
   public async list (req: Request, res: Response): Promise<Response<User>> {
@@ -27,16 +32,27 @@ class UserController implements Crud<User> {
   }
 
   public async update (req: Request, res: Response): Promise<Response<User>> {
-    return res.send()
+    try{
+      const { id } = req.params
+      const user = await UserModel.findById(id)
+      await user.set(req.body)
+      await user.save()
+      return res.send({ user })
+    }catch(error){
+      return res.status(400).send({ error: 'Erro ao editar o usuário'})
+    }
   }
 
-  public async delete (req: Request, res: Response): Promise<string> {
-    return 'Hello World'
+  public async delete (req: Request, res: Response): Promise<Response<string>> {
+    try{
+      const { id } = req.params
+      await UserModel.findByIdAndDelete(id)
+      return res.json({ message: 'Usuário deletado com sucesso.'})
+    }catch(error){
+      return res.status(400).send({ error: 'Erro ao deletar o usuário'})
+    }
   }
 
-  public async authenticate (req: Request, res: Response): Promise<string> {
-    return 'Hello World'
-  }
 }
 
 export default new UserController()

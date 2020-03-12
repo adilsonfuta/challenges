@@ -1,8 +1,13 @@
-import { Router } from 'express'
+import { Router, Application } from 'express'
 import UserController from '../controllers/UserController'
 
 const routes = Router()
 
 routes.get('/', UserController.list)
+routes.post('/', UserController.create)
+routes.get('/:id', UserController.list)
+routes.put('/:id', UserController.update)
+routes.delete('/:id', UserController.delete)
 
-module.exports = app => app.use('/users', routes)
+
+module.exports = (app:Application) => app.use('/users', routes)
