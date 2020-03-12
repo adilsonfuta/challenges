@@ -2,7 +2,7 @@ import jwt, { VerifyErrors } from 'jsonwebtoken'
 import { Request, Response, NextFunction } from 'express'
 import { Auth } from '../config/auth'
 
-module.exports = (req:Request, res:Response, next:NextFunction): Response<string> => {
+export default function(req:Request, res:Response, next:NextFunction): Response<string> {
     const authHeader = req.headers.authorization;
 
     if(!authHeader)

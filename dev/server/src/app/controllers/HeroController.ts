@@ -53,6 +53,7 @@ class HeroController implements Crud<Hero> {
     }
   }
 
+  
 }
 
 export default new HeroController()

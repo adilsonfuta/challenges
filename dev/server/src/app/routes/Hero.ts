@@ -1,7 +1,9 @@
 import { Router, Application } from 'express'
+import auth from '../middlewares/Authenticate'
 import HeroController from '../controllers/HeroController'
 
 const routes = Router()
+routes.use(auth)
 
 routes.get('/', HeroController.list)
 routes.post('/', HeroController.create)
