@@ -1,9 +1,7 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
-  width: 100px;
-  button {
-    width: 100%;
+export const Container = styled.button`
+    width: 100px;
      height: 30px;
      background: #5D468C;
      border-radius: 4px;
@@ -15,5 +13,4 @@ export const Container = styled.div`
      :hover {
          opacity: 0.75;
      }
-  }
 `;

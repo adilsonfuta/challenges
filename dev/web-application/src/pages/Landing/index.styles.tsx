@@ -19,6 +19,7 @@ export const Header = styled.div`
     .logo {
         display: flex;
         align-items: flex-end;
+        cursor: pointer;
         * {
             color: #FFF;
         }
