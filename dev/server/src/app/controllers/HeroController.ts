@@ -9,51 +9,49 @@ class HeroController implements Crud<Hero> {
       const hero = await HeroModel.findById(id)
       return res.json(hero)
     } catch (err) {
-      res.status(400).send({ message: 'Erro ao buscar o herói' })
+      res.status(400).send({ error: true, message: 'Erro ao buscar o herói' })
     }
   }
 
-  public async create (req: Request, res: Response): Promise<Response<Hero>>  {
+  public async create (req: Request, res: Response): Promise<Response<Hero>> {
     try {
       const hero = await HeroModel.create(req.body)
       return res.json(hero)
-    }catch(err){
-      return res.status(400).send({ message: 'Erro ao cadastrar o herói' })
+    } catch (err) {
+      return res.status(400).send({ error: true, message: 'Erro ao cadastrar o herói' })
     }
   }
 
   public async list (req: Request, res: Response): Promise<Response<Hero>> {
     try {
-      const heros = await HeroModel.find()
-      return res.json(heros)
+      const heroes = await HeroModel.find()
+      return res.json(heroes)
     } catch (err) {
-      res.status(400).send({ message: 'Erro ao buscar os heróis' })
+      res.status(400).send({ error: true, message: 'Erro ao buscar os heróis' })
     }
   }
 
   public async update (req: Request, res: Response): Promise<Response<Hero>> {
-    try{
+    try {
       const { id } = req.params
       const hero = await HeroModel.findById(id)
       await hero.set(req.body)
       await hero.save()
       return res.send({ hero })
-    }catch(error){
-      return res.status(400).send({ error: 'Erro ao editar o herói'})
+    } catch (error) {
+      return res.status(400).send({ error: true, message: 'Erro ao editar o herói' })
     }
   }
 
   public async delete (req: Request, res: Response): Promise<Response<string>> {
-    try{
+    try {
       const { id } = req.params
       await HeroModel.findByIdAndDelete(id)
-      return res.json({ message: 'Herói deletado com sucesso.'})
-    }catch(error){
-      return res.status(400).send({ error: 'Erro ao deletar o herói'})
+      return res.json({ message: 'Herói deletado com sucesso.' })
+    } catch (error) {
+      return res.status(400).send({ error: true, message: 'Erro ao deletar o herói' })
     }
   }
-
-  
 }
 
 export default new HeroController()

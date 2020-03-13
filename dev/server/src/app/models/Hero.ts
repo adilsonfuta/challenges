@@ -8,15 +8,15 @@ export interface Hero extends Document {
 }
 
 const HeroSchema = new Schema({
-    name: String,
-    class: String,
-    lat: Number,
-    lng: Number,
-    allocated: {
-        type: Boolean,
-        required: false,
-        default: false
-    }
+  name: String,
+  class: String,
+  lat: Number,
+  lng: Number,
+  allocated: {
+    type: Boolean,
+    required: false,
+    default: false
+  }
 })
 
 export default model<Hero>('Hero', HeroSchema)

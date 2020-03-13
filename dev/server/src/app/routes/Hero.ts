@@ -11,5 +11,4 @@ routes.get('/:id', HeroController.index)
 routes.put('/:id', HeroController.update)
 routes.delete('/:id', HeroController.delete)
 
-
-module.exports = (app:Application) => app.use('/heros', routes)
+module.exports = (app:Application) => app.use('/heroes', routes)
