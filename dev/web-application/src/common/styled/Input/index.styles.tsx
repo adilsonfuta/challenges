@@ -14,5 +14,6 @@ export const Container = styled.div`
         border: 0;
         border-radius: 2.5px;
         font-size: 1em;
+        padding: 0.25em 0.5em;
     }
 `;

@@ -3,6 +3,7 @@ import { Container } from './index.styles';
 
 interface Props {
     label?: string;
+    type?: string;
     labelColor?: string;
     placeholder?: string;
     value: string;
@@ -10,12 +11,12 @@ interface Props {
 }
 
 function Input({
-  label, labelColor = '#FFF', onChange, value, placeholder = '',
+  label, onChange, value, labelColor = '#FFF', placeholder = '', type = 'text',
 }:Props): React.ReactElement {
   return (
     <Container>
       {label && (<span style={{ color: labelColor }}>{label}</span>)}
-      <input value={value} placeholder={placeholder} onChange={(e) => onChange(e.target.value)} />
+      <input type={type} value={value} placeholder={placeholder} onChange={(e) => onChange(e.target.value)} />
     </Container>
   );
 }
