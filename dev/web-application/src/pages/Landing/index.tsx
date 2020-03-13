@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import {
   Container, Content, Header, WelcomeMessage,
 } from './index.styles';
@@ -6,9 +7,21 @@ import HeroGirl from '../../common/animations/HeroGirl';
 import Input from '../../common/styled/Input';
 import Button from '../../common/styled/Button';
 
+import * as Auth from '../../services/AuthService';
+
 function Landing(): React.ReactElement {
+  const history = useHistory();
+
   const [login, setLogin] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+
+  const handleLogin = async () => {
+    const response = await Auth.signIn(login, password);
+
+    if (response.error) return;
+
+    history.push('/dashboard');
+  };
 
   return (
     <Container>
@@ -20,7 +33,7 @@ function Landing(): React.ReactElement {
         <div className="login">
           <Input label="Login" type="text" value={login} onChange={setLogin} />
           <Input label="Senha" type="password" value={password} onChange={setPassword} />
-          <Button label="Login" onClick={() => console.log('login')} />
+          <Button label="Login" onClick={handleLogin} />
         </div>
       </Header>
       <Content>

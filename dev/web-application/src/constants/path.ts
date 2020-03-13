@@ -1,3 +1,4 @@
 export enum RoutesPath {
-    LANDING = '/'
+    LANDING = '/',
+    DASHBOARD = '/dashboard'
 }

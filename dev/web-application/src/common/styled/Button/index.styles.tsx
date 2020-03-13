@@ -11,7 +11,7 @@ export const Container = styled.div`
      border: 1px solid #FFFFFF20;
      color: #FFF;
      cursor: pointer;
-
+     
      :hover {
          opacity: 0.75;
      }

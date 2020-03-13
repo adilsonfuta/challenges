@@ -7,6 +7,7 @@ export const Container = styled.div`
     span {
         font-size: 14px;
         margin-bottom: 5px;
+        font-weight: 500;
     }
 
     input {
