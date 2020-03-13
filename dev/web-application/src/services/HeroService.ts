@@ -2,7 +2,7 @@ import api from '.';
 
 export async function list() {
   try {
-    const response = await api.get('heros');
+    const response = await api.get('heroes');
     return response.data;
   } catch (err) {
     return err.data;
@@ -12,7 +12,7 @@ export async function list() {
 
 export async function find(id: string) {
   try {
-    const response = await api.get(`heros/${id}`);
+    const response = await api.get(`heroes/${id}`);
     return response.data;
   } catch (err) {
     return err.data;
@@ -21,7 +21,7 @@ export async function find(id: string) {
 
 export async function create(user: any) {
   try {
-    const response = await api.post('heros', {
+    const response = await api.post('heroes', {
       ...user,
     });
     return response.data;
@@ -32,7 +32,7 @@ export async function create(user: any) {
 
 export async function update(user: any) {
   try {
-    const response = await api.put('heros', {
+    const response = await api.put('heroes', {
       ...user,
     });
     return response.data;
@@ -44,7 +44,7 @@ export async function update(user: any) {
 
 export async function remove(id: string) {
   try {
-    const response = await api.delete(`heros/${id}`);
+    const response = await api.delete(`heroes/${id}`);
     return response.data;
   } catch (err) {
     return err.data;

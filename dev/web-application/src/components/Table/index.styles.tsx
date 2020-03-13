@@ -69,6 +69,7 @@ export const Head = styled.th`
 
 export const Row = styled.tr<{ clickable?: boolean }>`
   background-color: white;
+  cursor: pointer;
 
   &:nth-child(even) {
     background-color: #fafafa;

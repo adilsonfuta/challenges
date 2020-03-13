@@ -10,7 +10,7 @@ api.addResponseTransform((response) => {
 
 
 api.addAsyncRequestTransform(async (request) => {
-  const token = await localStorage.getItem('@ZRPHeros:token');
+  const token = await localStorage.getItem('@ZRPHeroes:token');
 
   if (token) { request.headers.Authorization = `Bearer ${token}`; }
 });

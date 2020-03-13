@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { IconsPath } from '../../constants/path';
-import Heros from './Heros';
+import Heroes from './Heroes';
 import {
   Container, Header, Tab, Content,
 } from './index.styles';
@@ -16,7 +16,7 @@ function Dashboard(): React.ReactElement {
       <Header>
         <div className="logo">
           <h1>ZRP</h1>
-          <span>Heros</span>
+          <span>Heroes</span>
         </div>
         <Tab selected={option}>
           <button type="button" onClick={(e) => selectOption(1)}>Heróis</button>
@@ -28,7 +28,7 @@ function Dashboard(): React.ReactElement {
         </div>
       </Header>
       <Content>
-        {option === 1 && (<Heros />)}
+        {option === 1 && (<Heroes />)}
       </Content>
     </Container>
   );

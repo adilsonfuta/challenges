@@ -28,7 +28,7 @@ function Landing(): React.ReactElement {
       <Header>
         <div className="logo">
           <h1>ZRP</h1>
-          <span>Heros</span>
+          <span>Heroes</span>
         </div>
         <div className="login">
           <Input label="Login" type="text" value={login} onChange={setLogin} />
@@ -38,9 +38,9 @@ function Landing(): React.ReactElement {
       </Header>
       <Content>
         <WelcomeMessage>
-          <h1>Bem vindo ao ZRP Heros!</h1>
+          <h1>Bem vindo ao ZRP Heroes!</h1>
           <p>
-            O ZRP Heros é uma plataforma de gerenciamento e distribuição de heróis para
+            O ZRP Heroes é uma plataforma de gerenciamento e distribuição de heróis para
             combate de ameaças.Entre com suas credenciais e faça parte dessa batalha!
           </p>
         </WelcomeMessage>

@@ -52,7 +52,7 @@ function Table({
               {header.map(({ ref, render }) => {
                 const content = (value as any)[ref];
                 return (
-                  <S.Cell>
+                  <S.Cell key={ref}>
                     {render
                       ? render(content)
                       : <S.CellContents>{content}</S.CellContents>}

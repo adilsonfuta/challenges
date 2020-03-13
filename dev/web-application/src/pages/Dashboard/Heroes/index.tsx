@@ -4,7 +4,7 @@ import Table from '../../../components/Table';
 import Button from '../../../common/styled/Button';
 import { header } from './table.def';
 
-function Heros(): React.ReactElement {
+function Heroes(): React.ReactElement {
   return (
     <Container>
       <Header>
@@ -29,4 +29,4 @@ function Heros(): React.ReactElement {
 }
 
 
-export default Heros;
+export default Heroes;
