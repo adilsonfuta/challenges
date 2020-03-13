@@ -1,11 +1,12 @@
 import React from 'react';
-import './App.css';
+import GlobalStyle from './common/styled/global';
+import Routes from './routes';
 
-function App() {
-  return (
-    <div className="App">
-    </div>
-  );
-}
+const App: React.SFC = () => (
+  <>
+    <Routes />
+    <GlobalStyle />
+  </>
+);
 
 export default App;
