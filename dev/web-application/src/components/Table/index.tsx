@@ -1,6 +1,6 @@
 import React from 'react';
 import * as S from './index.styles';
-
+import Button from '../../common/styled/Button';
 import { Header } from './index.types';
 
 interface Props {
@@ -37,6 +37,8 @@ function Table({
               </S.Head>
             );
           })}
+          <S.Head />
+          <S.Head />
         </S.HeaderRow>
 
 
@@ -59,6 +61,12 @@ function Table({
                   </S.Cell>
                 );
               })}
+              <S.Cell>
+                <Button label="Editar" onClick={() => console.log(value)} styledObject={{ background: '#FFF', borderColor: '#3B2B5B', color: '#3B2B5B' }} />
+              </S.Cell>
+              <S.Cell>
+                <Button label="Excluir" onClick={() => console.log(value)} styledObject={{ background: '#EE3F3F' }} />
+              </S.Cell>
             </S.Row>
           );
         })}
