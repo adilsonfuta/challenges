@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import io from 'socket.io-client';
 import Heroes from './Heroes';
 import Alert from '../../components/Alert';
 import { ApplicationState } from '../../store';
+import { List } from '../../store/hero/actions';
 import { IconsPath } from '../../constants/path';
 import {
   Container, Header, Tab, Content,
 } from './index.styles';
 
 function Dashboard(): React.ReactElement {
-  const { user } = useSelector((state:ApplicationState) => state);
-  console.log(user);
+  const { user, heroes } = useSelector((state:ApplicationState) => state);
+  const dispatch = useDispatch();
+
   const [option, setOption] = useState<number>(1);
   const [alertMessage, setAlertMessage] = useState<string>('');
 
@@ -22,7 +24,10 @@ function Dashboard(): React.ReactElement {
       const { monsterName } = data;
       setAlertMessage(`Uma ameaça chamada ${monsterName} foi detectada.`);
     });
-  }, []);
+
+    dispatch(List());
+  }, [dispatch]);
+
 
   const selectOption = (op:number):void => {
     setOption(op);
@@ -45,7 +50,7 @@ function Dashboard(): React.ReactElement {
         </div>
       </Header>
       <Content>
-        {option === 1 && (<Heroes />)}
+        {option === 1 && (<Heroes data={heroes} />)}
       </Content>
     </Container>
   );

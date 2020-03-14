@@ -1,12 +1,8 @@
 import api from '.';
 
 export async function list() {
-  try {
-    const response = await api.get('heroes');
-    return response.data;
-  } catch (err) {
-    return err.data;
-  }
+  const response = await api.get('heroes');
+  return response.data;
 }
 
 

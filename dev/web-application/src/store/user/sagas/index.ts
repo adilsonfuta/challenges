@@ -7,7 +7,6 @@ import {
 } from '../actions';
 import * as Auth from '../../../services/AuthService';
 import { ErrorState } from '../../_/types';
-import { UserState } from '../types';
 
 function* signIn(action: ReturnType<typeof Login>) {
   try {
@@ -16,6 +15,9 @@ function* signIn(action: ReturnType<typeof Login>) {
     } = action;
 
     const { user, token } = yield Auth.signIn(login, password);
+
+    yield localStorage.setItem('@ZRPHeroes:token', token);
+
     yield put(ReceiveLogin({ ...user, token }));
   } catch (err) {
     const { data }: { data: ErrorState} = err;

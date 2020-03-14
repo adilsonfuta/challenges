@@ -18,7 +18,6 @@ function Landing(): React.ReactElement {
   const [password, setPassword] = useState<string>('');
 
   useEffect(() => {
-    console.log(user);
     if (user.token) history.push('dashboard');
   }, [history, user]);
 

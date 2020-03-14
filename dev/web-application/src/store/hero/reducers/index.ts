@@ -6,10 +6,9 @@ const initialState: HeroState[] = [];
 export const HeroesReducer = (state = initialState, action: HeroActionTypes): Array<HeroState> => {
   switch (action.type) {
     case RECEIVE_LIST:
-      return {
+      return [
         ...state,
-        ...action.payload,
-      };
+        ...action.payload];
     default:
       return state;
   }

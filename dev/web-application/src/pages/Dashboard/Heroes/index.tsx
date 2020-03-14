@@ -2,9 +2,14 @@ import React, { useState } from 'react';
 import { Container, Header } from './index.styles';
 import Table from '../../../components/Table';
 import Button from '../../../common/styled/Button';
+import { HeroState } from '../../../store/hero/types';
 import { header } from './table.def';
 
-function Heroes(): React.ReactElement {
+interface Props {
+  data: HeroState[]
+}
+
+function Heroes({ data = [] }:Props): React.ReactElement {
   return (
     <Container>
       <Header>
@@ -19,9 +24,7 @@ function Heroes(): React.ReactElement {
       </Header>
       <Table
         header={header}
-        data={[{
-          id: '1', name: 'teste', class: 'S', lat: 'lat', lng: 'asas',
-        }]}
+        data={data}
         keyReference="id"
       />
     </Container>

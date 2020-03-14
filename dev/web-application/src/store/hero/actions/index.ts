@@ -10,10 +10,11 @@ export const ReceiveList = (heroes: HeroState[]) => ({
   payload: heroes,
 });
 
-export const ListError = (message: string) => ({
+export const ListError = (message: string, error: boolean) => ({
   type: actionTypes.LIST_ERROR,
   payload: {
     message,
+    error,
   },
 });
 
