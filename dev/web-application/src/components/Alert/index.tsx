@@ -22,7 +22,7 @@ function Alert({
     setShow(message !== '');
     setTimeout(() => {
       setShow(false);
-    }, 60000);
+    }, 6000);
   }, [message]);
 
   return (

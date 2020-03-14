@@ -1,26 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   Container, Content, Header, WelcomeMessage,
 } from './index.styles';
 import HeroGirl from '../../common/animations/HeroGirl';
 import Input from '../../common/styled/Input';
 import Button from '../../common/styled/Button';
-
-import * as Auth from '../../services/AuthService';
+import { Login } from '../../store/user/actions';
+import { ApplicationState } from '../../store';
 
 function Landing(): React.ReactElement {
   const history = useHistory();
-
+  const dispatch = useDispatch();
+  const { error, user } = useSelector((state:ApplicationState) => state);
   const [login, setLogin] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
-  const handleLogin = async () => {
-    const response = await Auth.signIn(login, password);
+  useEffect(() => {
+    console.log(user);
+    if (user.token) history.push('dashboard');
+  }, [history, user]);
 
-    if (response.error) return;
-
-    history.push('/dashboard');
+  const handleLogin = () => {
+    dispatch(Login(login, password));
   };
 
   return (

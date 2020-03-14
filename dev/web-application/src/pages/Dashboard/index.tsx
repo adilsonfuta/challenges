@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import io from 'socket.io-client';
-import { IconsPath } from '../../constants/path';
 import Heroes from './Heroes';
 import Alert from '../../components/Alert';
+import { ApplicationState } from '../../store';
+import { IconsPath } from '../../constants/path';
 import {
   Container, Header, Tab, Content,
 } from './index.styles';
 
 function Dashboard(): React.ReactElement {
+  const { user } = useSelector((state:ApplicationState) => state);
+  console.log(user);
   const [option, setOption] = useState<number>(1);
   const [alertMessage, setAlertMessage] = useState<string>('');
 
@@ -37,7 +41,7 @@ function Dashboard(): React.ReactElement {
         </Tab>
         <div className="account">
           <img src={IconsPath.ACCOUNT} alt="" />
-          <span>ZRPAdmin</span>
+          <span>{user.name}</span>
         </div>
       </Header>
       <Content>
