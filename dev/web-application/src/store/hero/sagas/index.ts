@@ -1,9 +1,6 @@
 import {
   all, takeEvery, put,
 } from 'redux-saga/effects';
-import {
-  ReceiveList, ListError,
-} from '../actions';
 import * as actionTypes from '../actions/actionTypes';
 import * as Hero from '../../../services/HeroService';
 import * as actions from '../actions';
@@ -16,7 +13,7 @@ function* listHeroes(action: ReturnType<typeof actions.List>) {
     yield put(actions.ReceiveList(heroes));
   } catch (err) {
     const { data }: { data: ErrorState} = err;
-    yield put(ListError(data.message, data.error));
+    yield put(actions.ListError(data.message, data.error));
   }
 }
 

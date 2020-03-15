@@ -7,6 +7,7 @@ import {
 import HeroGirl from '../../common/animations/HeroGirl';
 import Input from '../../common/styled/Input';
 import Button from '../../common/styled/Button';
+import Alert from '../../components/Alert';
 import { Login } from '../../store/user/actions';
 import { ApplicationState } from '../../store';
 
@@ -14,12 +15,18 @@ function Landing(): React.ReactElement {
   const history = useHistory();
   const dispatch = useDispatch();
   const { error, user } = useSelector((state:ApplicationState) => state);
+
   const [login, setLogin] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  const [alertMessage, setAlertMessage] = useState<string>('');
 
   useEffect(() => {
     if (user.token) history.push('dashboard');
   }, [history, user]);
+
+  useEffect(() => {
+    if (error.error) setAlertMessage(error.message);
+  }, [error]);
 
   const handleLogin = () => {
     dispatch(Login(login, password));
@@ -27,6 +34,7 @@ function Landing(): React.ReactElement {
 
   return (
     <Container>
+      <Alert message={alertMessage} type="error" />
       <Header>
         <div className="logo">
           <h1>ZRP</h1>

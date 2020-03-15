@@ -6,7 +6,7 @@ export const Container = styled.div<{ background: string, show: boolean}>`
     justify-content: flex-start;
     align-items: flex-start;
     position: fixed;
-    top: 20px;
+    top: 80px;
     right: -370px;
     width: 350px;
     padding-bottom: 20px;

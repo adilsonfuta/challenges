@@ -1,5 +1,5 @@
 import {
-  combineReducers, AnyAction, Store, createStore, applyMiddleware,
+  combineReducers, AnyAction, createStore, applyMiddleware,
 } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { Reducer } from 'react';
