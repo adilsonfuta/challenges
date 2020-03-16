@@ -37,7 +37,8 @@ class HeroController implements Crud<Hero> {
       const hero = await HeroModel.findById(id)
       await hero.set(req.body)
       await hero.save()
-      return res.send({ hero })
+      const heroes = await HeroModel.find()
+      return res.json(heroes)
     } catch (error) {
       return res.status(400).send({ error: true, message: 'Erro ao editar o herói' })
     }
@@ -47,7 +48,8 @@ class HeroController implements Crud<Hero> {
     try {
       const { id } = req.params
       await HeroModel.findByIdAndDelete(id)
-      return res.json({ message: 'Herói deletado com sucesso.' })
+      const heroes = await HeroModel.find()
+      return res.json(heroes)
     } catch (error) {
       return res.status(400).send({ error: true, message: 'Erro ao deletar o herói' })
     }
