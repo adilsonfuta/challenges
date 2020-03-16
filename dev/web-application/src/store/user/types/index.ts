@@ -26,7 +26,8 @@ export interface LoginErrorAction {
   type: typeof LOGIN_ERROR;
   payload: {
     message: string,
-    error: boolean
+    error: boolean,
+    type: 'success' | 'warning' | 'error'
   };
 }
 

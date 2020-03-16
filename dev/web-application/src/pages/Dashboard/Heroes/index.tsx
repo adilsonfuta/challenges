@@ -1,25 +1,29 @@
 /* eslint-disable no-underscore-dangle */
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Container, Header } from './index.styles';
 import Table from '../../../components/Table';
 import CreateHero from '../../../features/dialogs/CreateHeroDialog';
 import UpdateHero from '../../../features/dialogs/UpdateHeroDialog';
 import Button from '../../../common/styled/Button';
+import { ApplicationState } from '../../../store';
 import { HeroState } from '../../../store/hero/types';
-import { Create, Update, Remove } from '../../../store/hero/actions';
+import {
+  Create, Update, Remove, List,
+} from '../../../store/hero/actions';
 import { header } from './table.def';
 
-interface Props {
-  data: HeroState[]
-}
-
-function Heroes({ data = [] }:Props): React.ReactElement {
+function Heroes(): React.ReactElement {
   const dispatch = useDispatch();
+  const { heroes } = useSelector((state:ApplicationState) => state);
 
   const [visibleCreateHero, setVisibleCreateHero] = useState<boolean>(false);
   const [visibleUpdateHero, setVisibleUpdateHero] = useState<boolean>(false);
   const [currentHero, setHero] = useState<HeroState>();
+
+  useEffect(() => {
+    dispatch(List());
+  }, [dispatch]);
 
   const handleCreate = () => {
     setVisibleCreateHero(true);
@@ -58,7 +62,7 @@ function Heroes({ data = [] }:Props): React.ReactElement {
       </Header>
       <Table
         header={header}
-        data={data}
+        data={heroes}
         keyReference="id"
         onEdit={handleUpdate}
         onDelete={handleSubmitDelete}

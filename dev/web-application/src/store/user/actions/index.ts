@@ -14,10 +14,11 @@ export const ReceiveLogin = (user: UserState) => ({
   payload: user,
 });
 
-export const LoginError = (message:string, error: boolean) => ({
+export const LoginError = (message:string, error: boolean, type: 'success' | 'warning' | 'error') => ({
   type: actionTypes.LOGIN_ERROR,
   payload: {
     message,
     error,
+    type,
   },
 });

@@ -1,3 +1,5 @@
+/* eslint-disable no-underscore-dangle */
+
 import api from '.';
 import { HeroState } from '../store/hero/types';
 
@@ -29,7 +31,6 @@ export async function create(hero: HeroState) {
 
 export async function update(hero: HeroState) {
   try {
-    // eslint-disable-next-line no-underscore-dangle
     const response = await api.put(`heroes/${hero._id}`, {
       ...hero,
     });

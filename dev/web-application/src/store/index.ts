@@ -7,30 +7,36 @@ import { all, fork } from 'redux-saga/effects';
 
 import { HeroState } from './hero/types';
 import { UserState } from './user/types';
-import { ErrorState } from './_/types';
+import { BattleState } from './battle/types';
+import { AlertState } from './_/types';
 import { UserReducer } from './user/reducers';
 import { HeroesReducer } from './hero/reducers';
-import { ErrorReducer } from './_';
+import { BattleReducer } from './battle/reducers';
+import { AlertReducer } from './_';
 import { watchUser } from './user/sagas';
 import { watchHero } from './hero/sagas';
+import { watchBattle } from './battle/sagas';
 
 export interface ApplicationState {
-  error: ErrorState;
+  alert: AlertState;
   user: UserState;
   heroes: HeroState[];
+  battles: BattleState[];
 }
 
 function* rootSaga() {
   yield all([
     fork(watchHero),
     fork(watchUser),
+    fork(watchBattle),
   ]);
 }
 
 const reducers = combineReducers<ApplicationState>({
-  error: ErrorReducer,
+  alert: AlertReducer,
   user: UserReducer,
   heroes: HeroesReducer,
+  battles: BattleReducer,
 });
 
 const rootReducer = reducers;

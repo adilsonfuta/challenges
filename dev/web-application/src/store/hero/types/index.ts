@@ -21,7 +21,9 @@ interface ListAction {
 export interface ListErrorAction {
   type: typeof actionTypes.LIST_ERROR;
   payload: {
+    error: boolean;
     message: string;
+    type: 'success' | 'warning' | 'error'
   };
 }
 
@@ -38,7 +40,9 @@ interface CreateAction {
 export interface CreateErrorAction {
   type: typeof actionTypes.CREATE_ERROR;
   payload: {
+    error: boolean;
     message: string;
+    type: 'success' | 'warning' | 'error'
   };
 }
 
@@ -58,7 +62,9 @@ interface UpdateAction {
 export interface UpdateErrorAction {
   type: typeof actionTypes.UPDATE_ERROR;
   payload: {
+    error: boolean;
     message: string;
+    type: 'success' | 'warning' | 'error'
   };
 }
 
@@ -77,7 +83,9 @@ interface RemoveAction {
 export interface RemoveErrorAction {
   type: typeof actionTypes.REMOVE_ERROR;
   payload: {
+    error: boolean;
     message: string;
+    type: 'success' | 'warning' | 'error'
   };
 }
 

@@ -4,7 +4,7 @@ import {
 import * as actionTypes from '../actions/actionTypes';
 import * as Hero from '../../../services/HeroService';
 import * as actions from '../actions';
-import { ErrorState } from '../../_/types';
+import { AlertState } from '../../_/types';
 import { HeroState } from '../types';
 
 function* listHeroes(action: ReturnType<typeof actions.List>) {
@@ -12,8 +12,8 @@ function* listHeroes(action: ReturnType<typeof actions.List>) {
     const heroes: HeroState[] = yield Hero.list();
     yield put(actions.ReceiveList(heroes));
   } catch (err) {
-    const { data }: { data: ErrorState} = err;
-    yield put(actions.ListError(data.message, data.error));
+    const { data }: { data: AlertState} = err;
+    yield put(actions.ListError(data.message, data.error, data.type));
   }
 }
 
@@ -27,8 +27,8 @@ function* createHero(action: ReturnType<typeof actions.Create>) {
     const heroe: HeroState = yield Hero.create(payload);
     yield put(actions.ReceiveCreate(heroe));
   } catch (err) {
-    const { data }: { data: ErrorState} = err;
-    yield put(actions.ListError(data.message, data.error));
+    const { data }: { data: AlertState} = err;
+    yield put(actions.ListError(data.message, data.error, data.type));
   }
 }
 
@@ -37,12 +37,12 @@ function* updateHero(action: ReturnType<typeof actions.Update>) {
     const {
       payload,
     } = action;
-    console.log(payload);
+
     const heroes: HeroState[] = yield Hero.update(payload);
     yield put(actions.ReceiveUpdate(heroes));
   } catch (err) {
-    const { data }: { data: ErrorState} = err;
-    yield put(actions.ListError(data.message, data.error));
+    const { data }: { data: AlertState} = err;
+    yield put(actions.ListError(data.message, data.error, data.type));
   }
 }
 
@@ -57,8 +57,8 @@ function* removeHero(action: ReturnType<typeof actions.Remove>) {
     const heroes: HeroState[] = yield Hero.remove(id);
     yield put(actions.ReceiveRemove(heroes));
   } catch (err) {
-    const { data }: { data: ErrorState} = err;
-    yield put(actions.ListError(data.message, data.error));
+    const { data }: { data: AlertState} = err;
+    yield put(actions.ListError(data.message, data.error, data.type));
   }
 }
 

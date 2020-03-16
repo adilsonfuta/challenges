@@ -6,7 +6,7 @@ import {
   Login, LoginError, ReceiveLogin,
 } from '../actions';
 import * as Auth from '../../../services/AuthService';
-import { ErrorState } from '../../_/types';
+import { AlertState } from '../../_/types';
 
 function* signIn(action: ReturnType<typeof Login>) {
   try {
@@ -20,8 +20,8 @@ function* signIn(action: ReturnType<typeof Login>) {
 
     yield put(ReceiveLogin({ ...user, token }));
   } catch (err) {
-    const { data }: { data: ErrorState} = err;
-    yield put(LoginError(data.message, data.error));
+    const { data }: { data: AlertState} = err;
+    yield put(LoginError(data.message, data.error, data.type));
   }
 }
 

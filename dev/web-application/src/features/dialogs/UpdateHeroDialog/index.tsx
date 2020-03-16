@@ -40,7 +40,7 @@ function UpdateHeroDialog({
       <Container>
         <Header>
           <h2>
-            Edite o herói! Basta modificar os dados.
+            Edite o herói! Basta modificar os dados e salvar.
           </h2>
         </Header>
         <Content>
@@ -48,7 +48,7 @@ function UpdateHeroDialog({
           <Input label="Insira a classe do herói" value={classe} onChange={setClasse} />
           <Input label="Insira a localização do herói (Latitude)" value={lat} onChange={setLat} />
           <Input label="Insira a localização do herói (Longitude)" value={lng} onChange={setLng} />
-          <Button label="Editar" onClick={handleSubmit} styledObject={{ width: '96%' }} />
+          <Button label="Salvar" onClick={handleSubmit} styledObject={{ width: '96%' }} />
         </Content>
       </Container>
     </DialogComponent>

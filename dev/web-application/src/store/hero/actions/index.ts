@@ -10,11 +10,12 @@ export const ReceiveList = (heroes: HeroState[]) => ({
   payload: heroes,
 });
 
-export const ListError = (message: string, error: boolean) => ({
+export const ListError = (message: string, error: boolean, type: 'success' | 'warning' | 'error') => ({
   type: actionTypes.LIST_ERROR,
   payload: {
     message,
     error,
+    type,
   },
 });
 
@@ -28,10 +29,12 @@ export const ReceiveCreate = (hero: HeroState) => ({
   payload: hero,
 });
 
-export const CreateError = (message: string) => ({
+export const CreateError = (message: string, error: boolean, type: 'success' | 'warning' | 'error') => ({
   type: actionTypes.CREATE_ERROR,
   payload: {
     message,
+    error,
+    type,
   },
 });
 
@@ -45,10 +48,12 @@ export const ReceiveUpdate = (heroes: HeroState[]) => ({
   payload: heroes,
 });
 
-export const UpdateError = (message: string) => ({
+export const UpdateError = (message: string, error: boolean, type: 'success' | 'warning' | 'error') => ({
   type: actionTypes.UPDATE_ERROR,
   payload: {
     message,
+    error,
+    type,
   },
 });
 
@@ -64,9 +69,11 @@ export const ReceiveRemove = (heroes: HeroState[]) => ({
   payload: heroes,
 });
 
-export const RemoveError = (message: string) => ({
+export const RemoveError = (message: string, error: boolean, type: 'success' | 'warning' | 'error') => ({
   type: actionTypes.REMOVE_ERROR,
   payload: {
     message,
+    error,
+    type,
   },
 });

@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import io from 'socket.io-client';
 import Heroes from './Heroes';
+import Battles from './Battles';
 import Alert from '../../components/Alert';
 import { ApplicationState } from '../../store';
-import { List } from '../../store/hero/actions';
 import { IconsPath } from '../../constants/path';
 import {
   Container, Header, Tab, Content,
 } from './index.styles';
 
 function Dashboard(): React.ReactElement {
-  const { user, heroes } = useSelector((state:ApplicationState) => state);
-  const dispatch = useDispatch();
+  const { user } = useSelector((state:ApplicationState) => state);
 
   const [option, setOption] = useState<number>(1);
   const [alertMessage, setAlertMessage] = useState<string>('');
@@ -22,11 +21,10 @@ function Dashboard(): React.ReactElement {
 
     socket.on('occurrence', (data:any) => {
       const { monsterName } = data;
+
       setAlertMessage(`Uma ameaça chamada ${monsterName} foi detectada.`);
     });
-
-    dispatch(List());
-  }, [dispatch]);
+  }, []);
 
 
   const selectOption = (op:number):void => {
@@ -50,7 +48,8 @@ function Dashboard(): React.ReactElement {
         </div>
       </Header>
       <Content>
-        {option === 1 && (<Heroes data={heroes} />)}
+        {option === 1 && (<Heroes />)}
+        {option === 2 && (<Battles />)}
       </Content>
     </Container>
   );

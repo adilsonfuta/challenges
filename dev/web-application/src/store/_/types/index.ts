@@ -3,13 +3,14 @@ import {
 } from '../../hero/types';
 import { LoginErrorAction } from '../../user/types';
 
-export interface ErrorState {
+export interface AlertState {
     error: boolean;
     message: string;
+    type: 'success' | 'warning' | 'error'
 }
 
 
-export type ErrorActionTypes =
+export type AlertActionTypes =
   | LoginErrorAction
   | ListErrorAction
   | CreateErrorAction

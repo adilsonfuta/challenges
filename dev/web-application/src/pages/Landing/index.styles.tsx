@@ -53,10 +53,12 @@ export const WelcomeMessage = styled.div`
 
     h1 {
         color: #3B2B5B;
+        font-size: 48px;
     }
 
     p {
         color:#91A0A9;
-        max-width: 400px;
+        font-size: 16px;
+        max-width: 500px;
     }
 `;
