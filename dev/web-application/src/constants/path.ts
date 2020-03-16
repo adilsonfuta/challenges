@@ -4,5 +4,6 @@ export enum RoutesPath {
 }
 
 export enum IconsPath {
-    ACCOUNT = 'assets/icons/account.svg'
+    ACCOUNT = 'assets/icons/account.svg',
+    CLOSE = 'assets/icons/close.svg'
 }

@@ -1,4 +1,5 @@
 import api from '.';
+import { HeroState } from '../store/hero/types';
 
 export async function list() {
   const response = await api.get('heroes');
@@ -15,10 +16,10 @@ export async function find(id: string) {
   }
 }
 
-export async function create(user: any) {
+export async function create(hero: HeroState) {
   try {
     const response = await api.post('heroes', {
-      ...user,
+      ...hero,
     });
     return response.data;
   } catch (err) {
@@ -26,10 +27,11 @@ export async function create(user: any) {
   }
 }
 
-export async function update(user: any) {
+export async function update(hero: HeroState) {
   try {
-    const response = await api.put('heroes', {
-      ...user,
+    // eslint-disable-next-line no-underscore-dangle
+    const response = await api.put(`heroes/${hero._id}`, {
+      ...hero,
     });
     return response.data;
   } catch (err) {
@@ -38,7 +40,7 @@ export async function update(user: any) {
 }
 
 
-export async function remove(id: string) {
+export async function remove(id?: string) {
   try {
     const response = await api.delete(`heroes/${id}`);
     return response.data;

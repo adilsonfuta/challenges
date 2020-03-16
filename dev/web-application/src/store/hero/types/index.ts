@@ -1,11 +1,12 @@
 import * as actionTypes from '../actions/actionTypes';
 
 export interface HeroState {
+  _id?: string;
   name: string;
   class: string;
   lat: number;
   lng: number;
-  allocated: boolean;
+  allocated?: boolean;
 }
 
 interface ReceiveListAction {
@@ -43,7 +44,7 @@ export interface CreateErrorAction {
 
 interface ReceiveUpdateAction {
   type: typeof actionTypes.RECEIVE_UPDATE;
-  payload: HeroState;
+  payload: HeroState[];
 }
 
 interface UpdateAction {
@@ -63,7 +64,7 @@ export interface UpdateErrorAction {
 
 interface ReceiveRemoveAction {
   type: typeof actionTypes.RECEIVE_REMOVE;
-  message: string;
+  payload: HeroState[];
 }
 
 interface RemoveAction {

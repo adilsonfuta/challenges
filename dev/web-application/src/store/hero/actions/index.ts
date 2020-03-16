@@ -20,10 +20,11 @@ export const ListError = (message: string, error: boolean) => ({
 
 export const Create = (hero: HeroState) => ({
   type: actionTypes.CREATE,
+  payload: hero,
 });
 
 export const ReceiveCreate = (hero: HeroState) => ({
-  type: actionTypes.CREATE,
+  type: actionTypes.RECEIVE_CREATE,
   payload: hero,
 });
 
@@ -34,13 +35,14 @@ export const CreateError = (message: string) => ({
   },
 });
 
-export const Update = (id: string) => ({
+export const Update = (hero: HeroState) => ({
   type: actionTypes.UPDATE,
+  payload: hero,
 });
 
-export const ReceiveUpdate = (hero: HeroState) => ({
+export const ReceiveUpdate = (heroes: HeroState[]) => ({
   type: actionTypes.RECEIVE_UPDATE,
-  payload: hero,
+  payload: heroes,
 });
 
 export const UpdateError = (message: string) => ({
@@ -50,18 +52,16 @@ export const UpdateError = (message: string) => ({
   },
 });
 
-export const Remove = (id: string) => ({
+export const Remove = (id?: string) => ({
   type: actionTypes.REMOVE,
   payload: {
     id,
   },
 });
 
-export const ReceiveRemove = (message: string) => ({
+export const ReceiveRemove = (heroes: HeroState[]) => ({
   type: actionTypes.RECEIVE_REMOVE,
-  payload: {
-    message,
-  },
+  payload: heroes,
 });
 
 export const RemoveError = (message: string) => ({

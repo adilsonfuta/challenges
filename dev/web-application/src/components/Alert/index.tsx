@@ -9,12 +9,13 @@ enum TypeAlert{
 
 interface Props {
     message: string;
+    resetMessage(value: string): void;
     type?: 'success' | 'warning' | 'error';
   }
 
 
 function Alert({
-  message, type = 'success',
+  message, resetMessage, type = 'success',
 }:Props): React.ReactElement {
   const [show, setShow] = useState<boolean>(false);
 
@@ -22,8 +23,9 @@ function Alert({
     setShow(message !== '');
     setTimeout(() => {
       setShow(false);
+      resetMessage('');
     }, 6000);
-  }, [message]);
+  }, [message, resetMessage]);
 
   return (
     <Container background={TypeAlert[type]} show={show}>

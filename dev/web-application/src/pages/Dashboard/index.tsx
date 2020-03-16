@@ -34,7 +34,7 @@ function Dashboard(): React.ReactElement {
   };
   return (
     <Container>
-      <Alert message={alertMessage} type="error" />
+      <Alert message={alertMessage} type="error" resetMessage={setAlertMessage} />
       <Header>
         <div className="logo">
           <h1>ZRP</h1>

@@ -8,11 +8,13 @@ interface Props {
   data: object[];
   keyReference: string;
   onRowClick?: (data: object) => void;
+  onEdit?: (data: object) => void;
+  onDelete?: (data: object) => void;
 }
 
 
 function Table({
-  header, data, keyReference, onRowClick,
+  header, data, keyReference, onRowClick, onEdit, onDelete,
 }:Props): React.ReactElement {
   const empty = data.length === 0;
 
@@ -37,8 +39,8 @@ function Table({
               </S.Head>
             );
           })}
-          <S.Head />
-          <S.Head />
+          { onEdit && (<S.Head />)}
+          { onDelete && (<S.Head />)}
         </S.HeaderRow>
 
 
@@ -61,12 +63,16 @@ function Table({
                   </S.Cell>
                 );
               })}
+              { onEdit && (
               <S.Cell>
-                <Button label="Editar" onClick={() => console.log(value)} styledObject={{ background: '#FFF', borderColor: '#3B2B5B', color: '#3B2B5B' }} />
+                <Button label="Editar" onClick={() => onEdit(value)} styledObject={{ background: '#FFF', borderColor: '#3B2B5B', color: '#3B2B5B' }} />
               </S.Cell>
+              )}
+              { onDelete && (
               <S.Cell>
-                <Button label="Excluir" onClick={() => console.log(value)} styledObject={{ background: '#EE3F3F' }} />
+                <Button label="Excluir" onClick={() => onDelete(value)} styledObject={{ background: '#EE3F3F' }} />
               </S.Cell>
+              )}
             </S.Row>
           );
         })}
