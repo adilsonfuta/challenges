@@ -9,7 +9,7 @@ class HeroController implements Crud<Hero> {
       const hero = await HeroModel.findById(id)
       return res.json(hero)
     } catch (err) {
-      res.status(400).send({ error: true, message: 'Erro ao buscar o herói' })
+      res.status(400).send({ error: true, message: 'Erro ao buscar o herói', type: 'error' })
     }
   }
 
@@ -18,7 +18,7 @@ class HeroController implements Crud<Hero> {
       const hero = await HeroModel.create(req.body)
       return res.json(hero)
     } catch (err) {
-      return res.status(400).send({ error: true, message: 'Erro ao cadastrar o herói' })
+      return res.status(400).send({ error: true, message: 'Erro ao cadastrar o herói', type: 'error' })
     }
   }
 
@@ -27,7 +27,7 @@ class HeroController implements Crud<Hero> {
       const heroes = await HeroModel.find()
       return res.json(heroes)
     } catch (err) {
-      res.status(400).send({ error: true, message: 'Erro ao buscar os heróis' })
+      res.status(400).send({ error: true, message: 'Erro ao buscar os heróis', type: 'error' })
     }
   }
 
@@ -40,7 +40,7 @@ class HeroController implements Crud<Hero> {
       const heroes = await HeroModel.find()
       return res.json(heroes)
     } catch (error) {
-      return res.status(400).send({ error: true, message: 'Erro ao editar o herói' })
+      return res.status(400).send({ error: true, message: 'Erro ao editar o herói', type: 'error' })
     }
   }
 
@@ -51,7 +51,7 @@ class HeroController implements Crud<Hero> {
       const heroes = await HeroModel.find()
       return res.json(heroes)
     } catch (error) {
-      return res.status(400).send({ error: true, message: 'Erro ao deletar o herói' })
+      return res.status(400).send({ error: true, message: 'Erro ao deletar o herói', type: 'error' })
     }
   }
 }
