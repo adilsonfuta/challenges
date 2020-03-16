@@ -15,6 +15,11 @@ const BattleSchema = new Schema({
   occurence: {
     type: Schema.Types.ObjectId,
     ref: 'Occurence'
+  },
+  createdAt: {
+    required: false,
+    type: Date,
+    default: Date.now()
   }
 })
 
