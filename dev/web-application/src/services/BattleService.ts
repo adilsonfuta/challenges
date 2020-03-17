@@ -13,7 +13,7 @@ export async function list() {
 export async function start(occurence:Occurence) {
   try {
     const response = await api.post('battles', {
-      ...occurence,
+      occurence,
     });
     return response.data;
   } catch (err) {

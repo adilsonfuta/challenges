@@ -3,14 +3,14 @@ import {
 } from 'redux-saga/effects';
 import * as actionTypes from '../actions/actionTypes';
 import {
-  List, ReceiveList, ListError,
+  List, ReceiveList, ListError, Battle, ReceiveBattle, BattleError,
 } from '../actions';
-import * as Battle from '../../../services/BattleService';
+import * as BattleService from '../../../services/BattleService';
 import { AlertState } from '../../_/types';
 
 function* list(action: ReturnType<typeof List>) {
   try {
-    const battles = yield Battle.list();
+    const battles = yield BattleService.list();
 
     yield put(ReceiveList(battles));
   } catch (err) {
@@ -19,8 +19,26 @@ function* list(action: ReturnType<typeof List>) {
   }
 }
 
+function* start(action: ReturnType<typeof Battle>) {
+  try {
+    const {
+      payload: {
+        occurence,
+      },
+    } = action;
+
+    const battle = yield BattleService.start(occurence);
+
+    yield put(ReceiveBattle(battle));
+  } catch (err) {
+    const { data }: { data: AlertState} = err;
+    yield put(BattleError(data.message, data.error, data.type));
+  }
+}
+
 export function* watchBattle() {
   yield all([
     takeEvery(actionTypes.LIST_BATTLE, list),
+    takeEvery(actionTypes.BATTLE, start),
   ]);
 }

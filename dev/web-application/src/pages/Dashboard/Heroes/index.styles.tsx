@@ -14,3 +14,10 @@ export const Header = styled.div`
         color: '#3C3C3C'
     }
 `;
+
+export const Allocated = styled.div<{ status: boolean }>`
+    width: 20px;
+    height: 20px;
+    border-radius: 50px;
+    background: ${(props) => (props.status ? '#f30000' : '#00f300')}
+`;

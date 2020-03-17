@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable no-underscore-dangle */
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -29,8 +30,8 @@ function Battles(): React.ReactElement {
           )
           : (
             <>
-              {battles.map((battle) => (
-                <Item key={battle._id}>
+              {battles.map((battle, i) => (
+                <Item key={i}>
                   <span>{battle.occurence.name}</span>
                   <span>{battle.hero.name}</span>
                   <span>{battle.createdAt}</span>

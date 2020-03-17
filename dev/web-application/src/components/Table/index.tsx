@@ -44,15 +44,14 @@ function Table({
         </S.HeaderRow>
 
 
-        {data.map((value) => {
+        {data.map((value, i) => {
           const onClick = () => {
             handleRowClick(value);
           };
 
           const clickable = !!onRowClick;
-          const key = (value as any)[keyReference];
           return (
-            <S.Row onClick={onClick} key={key} clickable={clickable}>
+            <S.Row onClick={onClick} key={i} clickable={clickable}>
               {header.map(({ ref, render }) => {
                 const content = (value as any)[ref];
                 return (
