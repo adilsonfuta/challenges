@@ -1,5 +1,5 @@
 import api from '.';
-import { Occurence } from '../store/battle/types';
+import { Occurrence } from '../store/battle/types';
 
 export async function list() {
   try {
@@ -10,10 +10,10 @@ export async function list() {
   }
 }
 
-export async function start(occurence:Occurence) {
+export async function start(occurrence:Occurrence) {
   try {
     const response = await api.post('battles', {
-      occurence,
+      occurrence,
     });
     return response.data;
   } catch (err) {

@@ -1,11 +1,11 @@
-import { BattleState, Occurence } from '../types';
+import { BattleState, Occurrence } from '../types';
 import * as actionTypes from './actionTypes';
 
 
-export const Battle = (occurence: Occurence) => ({
+export const Battle = (occurrence: Occurrence) => ({
   type: actionTypes.BATTLE,
   payload: {
-    occurence,
+    occurrence,
   },
 });
 

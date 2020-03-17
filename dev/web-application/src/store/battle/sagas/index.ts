@@ -23,11 +23,11 @@ function* start(action: ReturnType<typeof Battle>) {
   try {
     const {
       payload: {
-        occurence,
+        occurrence,
       },
     } = action;
 
-    const battle = yield BattleService.start(occurence);
+    const battle = yield BattleService.start(occurrence);
 
     yield put(ReceiveBattle(battle));
   } catch (err) {

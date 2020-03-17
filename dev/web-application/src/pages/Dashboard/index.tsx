@@ -22,8 +22,8 @@ function Dashboard(): React.ReactElement {
   useEffect(() => {
     const socket = io('https://zrp-challenge-socket.herokuapp.com:443');
 
-    socket.on('occurrence', (occurence:any) => {
-      const { monsterName: name, dangerLevel: level, location } = occurence;
+    socket.on('occurrence', (occurrence:any) => {
+      const { monsterName: name, dangerLevel: level, location } = occurrence;
       const { lat, lng } = location[0];
       setAlertMessage(`Uma ameaça chamada ${name} foi detectada.`);
       dispatch(Battle({

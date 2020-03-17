@@ -94,4 +94,5 @@ export const CellContents = styled.span`
 export const Cell = styled.td`
   padding: 0.25rem 0.5rem;
   text-align: center;
+  text-align: -webkit-center;
 `;

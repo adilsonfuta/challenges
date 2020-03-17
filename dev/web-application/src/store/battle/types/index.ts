@@ -4,7 +4,7 @@ import {
 } from '../actions/actionTypes';
 import { HeroState } from '../../hero/types';
 
-export interface Occurence {
+export interface Occurrence {
   _id?: string;
   name: string;
   level: string;
@@ -15,7 +15,7 @@ export interface Occurence {
 
 export interface BattleState {
   _id?: string;
-  occurence: Occurence;
+  occurrence: Occurrence;
   hero: HeroState;
   createdAt: Moment
 }
@@ -28,7 +28,7 @@ interface ReceiveBattleAction {
 interface BattleAction {
   type: typeof BATTLE;
   payload: {
-    occurence: Occurence
+    occurrence: Occurrence
   };
 }
 

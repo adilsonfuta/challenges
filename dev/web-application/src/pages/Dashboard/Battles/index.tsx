@@ -2,6 +2,7 @@
 /* eslint-disable no-underscore-dangle */
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import moment from 'moment';
 import {
   Container, Header, Content, Item,
 } from './index.styles';
@@ -20,6 +21,11 @@ function Battles(): React.ReactElement {
     <Container>
       <Header>
         <h1>Histórico de Batalhas</h1>
+        <div className="titles">
+          <span>Ameaça</span>
+          <span>Herói</span>
+          <span />
+        </div>
       </Header>
       <Content>
         {battles.length === 0
@@ -32,9 +38,9 @@ function Battles(): React.ReactElement {
             <>
               {battles.map((battle, i) => (
                 <Item key={i}>
-                  <span>{battle.occurence.name}</span>
+                  <span>{battle.occurrence.name}</span>
                   <span>{battle.hero.name}</span>
-                  <span>{battle.createdAt}</span>
+                  <span>{moment(battle.createdAt).fromNow()}</span>
                 </Item>
               ))}
             </>
