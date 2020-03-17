@@ -1,6 +1,6 @@
-import BattleModel, { Battle } from '../models/Battle'
-import OccurenceModel, { Occurence } from '../models/Occurence'
-import HeroModel, { Hero } from '../models/Hero'
+import BattleModel, { Battle } from '@models/Battle'
+import OccurenceModel, { Occurence } from '@models/Occurence'
+import HeroModel, { Hero } from '@models/Hero'
 import { Request, Response } from 'express'
 
 class BattleController {
@@ -8,8 +8,8 @@ class BattleController {
     try {
       const { occurence }: { occurence: Occurence } = req.body
 
-      let hero:Hero[]
-      let battle:Battle
+      let hero:Hero[] | undefined
+      let battle:Battle | undefined
 
       switch (occurence.level) {
         case 'God':
@@ -28,18 +28,18 @@ class BattleController {
           break
       }
 
-      if (hero.length === 0) return res.status(404).send({ error: true, message: 'Nenhum herói com a classe adequada para combater a ameçada.', type: 'error' })
+      if (!hero || hero.length === 0) return res.status(404).send({ error: true, message: 'Nenhum herói com a classe adequada para combater a ameçada.', type: 'error' })
 
-      const selectedHero = hero[0]
+      const selectedHero = (hero as Hero[])[0]
       await selectedHero.set({ allocated: true })
       await selectedHero.save()
 
-      setTimeout(async () => {
+      await setTimeout(async () => {
         await selectedHero.set({ allocated: false })
         await selectedHero.save()
         const selectedOccurence = await OccurenceModel.create(occurence)
         battle = await BattleModel.create({ occurence: selectedOccurence, hero: selectedHero })
-      }, 1000)
+      }, 4000)
 
       return res.json(battle)
     } catch (err) {

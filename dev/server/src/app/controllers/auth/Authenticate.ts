@@ -1,7 +1,7 @@
 import bcrypt from 'bcryptjs'
-import { generateToken } from '../../utils'
+import { generateToken } from '@utils/index'
 import { Request, Response } from 'express'
-import User from '../../models/User'
+import User from '@models/User'
 
 class AuthenticateController {
   async login (req:Request, res:Response): Promise<Response> {

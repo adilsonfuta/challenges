@@ -1,6 +1,6 @@
 import { Router, Application } from 'express'
-import auth from '../middlewares/Authenticate'
-import BattleController from '../controllers/BattleController'
+import auth from '@middlewares/Authenticate'
+import BattleController from '@controllers/BattleController'
 
 const routes = Router()
 routes.use(auth)

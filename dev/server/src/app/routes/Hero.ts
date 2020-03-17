@@ -1,6 +1,6 @@
 import { Router, Application } from 'express'
-import auth from '../middlewares/Authenticate'
-import HeroController from '../controllers/HeroController'
+import auth from '@middlewares/Authenticate'
+import HeroController from '@controllers/HeroController'
 
 const routes = Router()
 routes.use(auth)

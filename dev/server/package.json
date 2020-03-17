@@ -16,7 +16,9 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.9.4"
+    "module-alias": "^2.2.2",
+    "mongoose": "^5.9.4",
+    "tsconfig-paths": "^3.9.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.6",
@@ -41,25 +43,16 @@
     "sucrase": "^3.12.1",
     "supertest": "^4.0.2",
     "ts-jest": "^25.2.1",
+    "ts-node": "^8.6.2",
     "typescript": "^3.8.3"
   },
-  "jest": {
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js"
-    ],
-    "transform": {
-      "^.+\\.(ts|tsx)$": "ts-jest"
-    },
-    "globals": {
-      "ts-jest": {
-        "tsConfigFile": "tsconfig.json"
-      }
-    },
-    "testMatch": [
-      "**/__tests__/**/*.[jt]s?(x)",
-      "**/?(*.)+(spec|test).[tj]s?(x)"
-    ]
+  "_moduleAliases": {
+    "@common": "dist/app/common",
+    "@config": "dist/app/config",
+    "@controllers": "dist/app/controllers",
+    "@middlewares": "dist/app/middlewares",
+    "@models": "dist/app/models",
+    "@routes": "dist/app/routes",
+    "@utils": "dist/app/utils"
   }
 }

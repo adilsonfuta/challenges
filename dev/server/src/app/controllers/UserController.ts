@@ -1,6 +1,6 @@
-import UserModel, { User } from '../models/User'
+import UserModel, { User } from '@models/User'
 import { Request, Response } from 'express'
-import { Crud } from '../common/crud'
+import { Crud } from '@common/crud'
 
 class UserController implements Crud<User> {
   public async index (req: Request, res: Response): Promise<Response<User>> {

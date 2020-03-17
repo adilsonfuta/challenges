@@ -1,6 +1,6 @@
 import jwt, { VerifyErrors } from 'jsonwebtoken'
 import { Request, Response, NextFunction } from 'express'
-import { Auth } from '../config/auth'
+import { Auth } from '@config/auth'
 
 export default function (req:Request, res:Response, next:NextFunction): Response<string> {
   const authHeader = req.headers.authorization

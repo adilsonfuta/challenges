@@ -1,6 +1,6 @@
 import HeroModel, { Hero } from '../models/Hero'
 import { Request, Response } from 'express'
-import { Crud } from '../common/crud'
+import { Crud } from '@common/crud'
 
 class HeroController implements Crud<Hero> {
   public async index (req: Request, res: Response): Promise<Response<Hero>> {
@@ -9,7 +9,7 @@ class HeroController implements Crud<Hero> {
       const hero = await HeroModel.findById(id)
       return res.json(hero)
     } catch (err) {
-      res.status(400).send({ error: true, message: 'Erro ao buscar o herói', type: 'error' })
+      return res.status(400).send({ error: true, message: 'Erro ao buscar o herói', type: 'error' })
     }
   }
 
@@ -34,7 +34,7 @@ class HeroController implements Crud<Hero> {
   public async update (req: Request, res: Response): Promise<Response<Hero>> {
     try {
       const { id } = req.params
-      const hero = await HeroModel.findById(id)
+      const hero:Hero = await HeroModel.findById(id)
       await hero.set(req.body)
       await hero.save()
       const heroes = await HeroModel.find()

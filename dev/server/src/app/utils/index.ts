@@ -1,4 +1,4 @@
-import { Auth } from '../config/auth'
+import { Auth } from '@config/auth'
 import jwt from 'jsonwebtoken'
 
 export function generateToken (params:Record<string, any> = {}): string {
