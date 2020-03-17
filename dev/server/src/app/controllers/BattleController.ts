@@ -1,17 +1,17 @@
 import BattleModel, { Battle } from '@models/Battle'
-import OccurenceModel, { Occurence } from '@models/Occurence'
+import OccurrenceModel, { Occurrence } from '@models/Occurrence'
 import HeroModel, { Hero } from '@models/Hero'
 import { Request, Response } from 'express'
 
 class BattleController {
   public async start (req: Request, res: Response): Promise<Response<Battle>> {
     try {
-      const { occurence }: { occurence: Occurence } = req.body
+      const { occurrence }: { occurrence: Occurrence } = req.body
 
       let hero:Hero[] | undefined
       let battle:Battle | undefined
 
-      switch (occurence.level) {
+      switch (occurrence.level) {
         case 'God':
           hero = await HeroModel.find().where('class').equals('S')
           break
@@ -37,11 +37,11 @@ class BattleController {
       await setTimeout(async () => {
         await selectedHero.set({ allocated: false })
         await selectedHero.save()
-        const selectedOccurence = await OccurenceModel.create(occurence)
-        battle = await BattleModel.create({ occurence: selectedOccurence, hero: selectedHero })
-      }, 4000)
+        const selectedOccurrence = await OccurrenceModel.create(occurrence)
+        battle = await BattleModel.create({ occurrence: selectedOccurrence, hero: selectedHero })
 
-      return res.json(battle)
+        return res.json(battle)
+      }, 60000)
     } catch (err) {
       return res.status(400).send({ error: true, message: 'Erro ao iniciar uma nova batalha', type: 'error' })
     }
@@ -49,7 +49,7 @@ class BattleController {
 
   public async list (req: Request, res: Response): Promise<Response<Battle>> {
     try {
-      const Battles = await BattleModel.find().populate(['occurence', 'hero'])
+      const Battles = await BattleModel.find().populate(['occurrence', 'hero'])
       return res.json(Battles)
     } catch (err) {
       res.status(400).send({ error: true, message: 'Erro ao buscar o histórico de batalhas', type: 'error' })

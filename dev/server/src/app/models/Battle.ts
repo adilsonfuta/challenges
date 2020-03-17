@@ -1,10 +1,10 @@
 import { Schema, Document, model } from 'mongoose'
 import { Hero } from './Hero'
-import { Occurence } from './Occurence'
+import { Occurrence } from './Occurrence'
 
 export interface Battle extends Document {
     hero: Hero;
-    occurence: Occurence;
+    occurrence: Occurrence;
 }
 
 const BattleSchema = new Schema({
@@ -12,14 +12,13 @@ const BattleSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Hero'
   },
-  occurence: {
+  occurrence: {
     type: Schema.Types.ObjectId,
-    ref: 'Occurence'
+    ref: 'Occurrence'
   },
   createdAt: {
-    required: false,
     type: Date,
-    default: Date.now()
+    default: Date.now
   }
 })
 
