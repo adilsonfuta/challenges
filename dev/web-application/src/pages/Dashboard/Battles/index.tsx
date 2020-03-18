@@ -16,7 +16,7 @@ function Battles(): React.ReactElement {
   useEffect(() => {
     dispatch(List());
   }, [dispatch]);
-
+  console.log(battles);
   return (
     <Container>
       <Header>

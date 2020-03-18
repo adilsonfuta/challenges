@@ -15,7 +15,7 @@ export const Header = styled.div`
     }
 `;
 
-export const Allocated = styled.div<{ status: boolean }>`
+export const Status = styled.div<{ status: boolean }>`
     width: 20px;
     height: 20px;
     border-radius: 50px;

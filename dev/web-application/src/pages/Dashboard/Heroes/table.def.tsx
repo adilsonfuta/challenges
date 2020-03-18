@@ -1,13 +1,13 @@
 import React from 'react';
 import { Header } from '../../../components/Table/index.types';
-import { Allocated } from './index.styles';
+import { Status } from './index.styles';
 
 export const header: Header[] = [
   {
-    name: 'Alocado',
+    name: 'Status',
     ref: 'allocated',
     render(allocated: boolean) {
-      return (<Allocated status={allocated} />);
+      return (<Status status={allocated} />);
     },
   },
   {
