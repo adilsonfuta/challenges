@@ -49,7 +49,7 @@ class UserController implements Crud<User> {
       await UserModel.findByIdAndDelete(id)
       return res.json({ error: false, message: 'Usuário deletado com sucesso.', type: 'success' })
     } catch (error) {
-      return res.status(400).send({ error: 'Erro ao deletar o usuário', type: 'error' })
+      return res.status(400).send({ error: true, message: 'Erro ao deletar o usuário', type: 'error' })
     }
   }
 }
