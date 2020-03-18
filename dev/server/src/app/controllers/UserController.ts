@@ -39,7 +39,7 @@ class UserController implements Crud<User> {
       await user.save()
       return res.send({ user })
     } catch (error) {
-      return res.status(400).send({ error: 'Erro ao editar o usuário', type: 'error' })
+      return res.status(400).send({ error: true, message: 'Erro ao editar o usuário', type: 'error' })
     }
   }
 

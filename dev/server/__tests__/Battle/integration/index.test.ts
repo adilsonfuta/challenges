@@ -1,12 +1,12 @@
 /* eslint-disable no-undef */
 import request from 'supertest'
 import app from '../../../src/app'
+import { generateToken } from '@utils/index'
 
-describe('Start a Battle', () => {
-  const token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlNmE1MDIwMzJlMDlhNmVlOGYxZTI0OCIsImlhdCI6MTU4NDQ1Mzc1NSwiZXhwIjoxNTg0NTQwMTU1fQ.i-yMHEj3okGGhBEtYlUV94QILf4Biurd51Iz915sGE0'
+describe('Battle', () => {
   it('Should simulate a battle and save a new battle with occurrence and hero', async () => {
     jest.setTimeout(65000)
-
+    const token = await generateToken({ id: '5e6a502032e09a6ee8f1e248' })
     const occurrence = {
       name: 'Occurrence test',
       level: 'Dragon',
@@ -16,10 +16,19 @@ describe('Start a Battle', () => {
 
     const response = await request(app)
       .post('/battles')
-      .set({ Authorization: token })
+      .set({ Authorization: `Bearer ${token}` })
       .send({
         occurrence
       })
+
+    expect(response.status).toBe(200)
+  })
+
+  it('Should list all battles', async () => {
+    const token = await generateToken({ id: '5e6a502032e09a6ee8f1e248' })
+    const response = await request(app)
+      .get('/battles')
+      .set({ Authorization: `Bearer ${token}` })
 
     expect(response.status).toBe(200)
   })
