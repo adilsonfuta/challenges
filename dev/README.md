@@ -1,97 +1,159 @@
-### iHeros - Teste Fullstack
-    
-Este é o teste usado por nós aqui da ZRP para avaliar tecnicamente os candidatos a nossas vagas de desenvolvedores Fullstack. Se você estiver participando de um processo seletivo para nossa equipe, certamente em algum momento receberá este link, mas caso você tenha chegado aqui "por acaso", sinta-se convidado a desenvolver nosso teste e enviar uma mensagem para nós no e-mail jobs@zrp.com.br.
+# ZRP - Teste Fullstack
 
-Aqui na ZRP nós aplicamos este mesmo teste para as vagas em todos os níveis, ou seja, um candidato a uma vaga de dev júnior fará o mesmo teste de um outro candidato a uma vaga de dev sênior, mudando obviamente o nosso critério de avaliação do resultado do teste.
+## Introdução
 
-Nós fazemos isso esperando que as pessoas mais iniciantes entendam qual o modelo de profissional que temos por aqui e que buscamos para o nosso time. Portanto, se você estiver se candidatando a uma vaga mais iniciante, não se assuste, e faça o melhor que você puder!
+Este é um desafio criado pela empresa ZRP, que tem o intuito de averiguar as habilidades dos participantes e possiveis contratados da empresa.
 
-### Instruções
+A aplicação consistem em uma rede de cadastro (teste backend) e distribuição (teste frontend) de heroes, levando em consideração o nível da ameaça que estaria atacando uma determinada região.
 
-Você deverá criar um fork deste projeto, e desenvolver em cima do seu fork. Use o README principal do seu repositório para nos contar como foi resolver seu teste, as decisões tomadas, como você organizou e separou seu código, e principalmente as instruções de como rodar seu projeto.
+## Processo de execução do projeto
 
-Lembre-se que este é um teste técnico e não um concurso público, portanto, não existe apenas uma resposta correta. Mostre que você é bom e nos impressione, mas não esqueça do objetivo do projeto.
+**Clone o projeto executando esse comando no terminal**
+```
+git clone https://github.com/wellingtonsa/challenges.git
+```
+**Entre na pasta do projeto e execute o comando para instalação das dependências/libs do projeto**
 
-Nós não definimos um tempo limite para resolução deste teste, o que vale para nós e o resultado final e a evolução da criação do projeto até se atingir este resultado.
-    
+```
+/* para o backend */
+cd challenges/dev/server 
 
-#### Descrição
-> Rede de cadastro(test backend) e distribuição(test frontend) de heroes, levando em consideração o nível da ameaça que estaria atacando uma determinada região.
+/* para o fromtend */
+cd challenges/dev/web-application 
 
-Você está no ano de 3150 e está a frente do setor de tecnologia responsável pelo desenvolvimento do sistema de gerenciamento de distribuição de Heros para combater ameaças. O sistema deve monitorar o sistema de alertas de ameças provido pela ONU e alocar os herois para cada nova ameaça existente no globo terrestre. 
-
-Para isso, será preciso implementar as seguintes funcionalidades:
-
- - Autenticação
- - Cadastre, edite, remova e liste herois
- - Aloque automaticamente o heroi mais adequado quando uma nova ameaça surgir.
- - Registre a desalocação de um heroi (entende-se por desalocação, o ato do heroi ja ter derrotado a ameaça, depois dele ter sido alocado).
- - Exiba o histórico de ameaças junto com quem foi o responsável por impedir a catástrofe.
-
-Além disso, o lider de operações ordenou as seguintes regras para o desenvolvimento da aplicação:
-- Cada **Hero** e **Ameaça** tem um rank
-- Os herois devem ser alocados de acordo com sua localização e rank adequado ao nível de ameaças. 
-- Os ranks são os seguintes:
-
-**Heroes**
-Classe S, A, B e C.
-
-**Ameaças**
-Nível Gold, Silver, Copper e Wood.
-
-- Herois do rank classe "S" tem prioridade sobre ameaças do tipo "Gold";
-- Herois do rank classe "A" tem prioridade sobre ameaças do tipo "Silver";
-- Herois do rank classe "B" tem prioridade sobre ameaças do tipo "Copper";
-- Herois do rank classe "C" tem prioridade sobre ameaças do tipo "Wood";
-
-> Bônus: Alocar multiplos herois de ranks menores em uma mesma ameaça de rank maior. (Utilize a proporção que achar melhor).
-
-Você devera consumir um socket que retornas as informações das ameaças, cada ameça tem o seguinte formato de objeto:
-
-``` 
-{
-    location: {
-        lat: -5.836597,
-        lng: -35.236007,
-    },
-    dangerLevel: 'S',
-    monsterName: 'Black Dragon',
-}
+npm install // ou yarn install se preferir
 ```
 
-A url do serviço de socket é a: 
+  **Por fim, os seguintes comandos podem ser dados:**
+  - ``` yarn dev ``` - para executar o projeto
+  - ``` yarn test ``` - para executar os testes (somente no backend)
 
-`https://zrp-challenge-socket.herokuapp.com:443`
+## Principais ferramentas utillizadas
 
-E o evento a ser escutado é o `occurrence` 
+### Frontend
+
+- React.js  
+  
+  **Algumas tecnologias, linguagens e bibliotecas utilizadas:**
+
+- Hooks
+- Styled Components
+- Redux e Redux Sagas
+- Typescript
+- Lottie
+- Eslint
+- Prettier
+- Socket.io
+
+### Backend
+
+- Node.js  
+  
+  **Algumas tecnologias, linguagens e bibliotecas utilizadas:**
+
+- Express
+- Typescript
+- Jest
+- MongoDB
+- Mongoose
+- Eslint
+- Prettier
+- Nodemon
 
 
-### Tecnologias 
+## Estrutura do Projeto
 
-**Frontend**
+###Frontend
 
-- Vue
-- Angular
-- React
+**A estrutura do projeto está dividida da seguinte forma:**
+```
+ web-application
+│
+└─── src
+    │
+    │ + App.tsx
+    │ + index.tsx   
+    │ + routes.tsx
+    │
+    └─── assets    
+    │   
+    └─── common
+    │   
+    └─── components
+    │   
+    └─── constants
+    │   
+    └─── features
+    │   
+    └─── pages
+    │   
+    └─── services
+    │   
+    └─── store
+```
+- `src`: Representa a pasta que terá todo o código importante da aplicação, incluindo lógica, comunicação com api externa e outros. Nela contém um arquivo em especifico que vale a pena citar, o `routes.tsx` que contém todas as rotas de navegação da aplicação. Além do `App.tsx` e do `index.tsx` que basicamente contém toda a configuração inicial.
+- `assets`: Nessa pasta teremos todos os arquivos com extensão diferente da padrão do projeto (tsx e ts) e que servirão de suporte para criação de um outro módulo.
+- `common`: Na pasta `common`, gosto de definir que tudo que irá pra lá são componentes que são simples demais pra está dentro de `components` (explicarei essa pasta jajá), mas que tem um número de replicação que o faz poder ser um componente separado. Um exemplo disso são componentes como botões e campos de textos que são padronizados em toda a aplicação (`styled`).
+- `components`: Nessa pasta, basicamente teremos todos os componentes que podem ser reutilzados em diferentes contextos dentro da aplicação.
+- `constants`: Essa pasta basicamente podemos ter tudo que é constante na aplicação separada por aquivos, como por exemplo cores, images ou caminho de arquivos estáticos. Deixando assim outros componentes que utilizam essas constates com um ccodigo mais legivel.
+- `features`: Essa pasta é bem exclusiva, nela teremos todos os componentes que devem ser um componentes separado do restante da página, mas que terá uma utilização bem expecifica na aplicação. Um bom exemplo disso são os Modals (ou Dialogs).
+- `pages`: Como o próprio nome sugere, na pasta `pages` estará contido todos as páginas da aplicação. Dito como página um conjunto de componentes inter-relacionados.
+- `services`: A pasta `services` conterá os arquivos que cuidarão do contato com os serviços externos. Todos os arquivos contidos aqui terão uma comunicação assincrona e retornarão do serviço externo um erro ou o que foi solicitado (Vale ressaltar que os services não conterão regras de negócio, isso será lidado com outro modulo explicado mais a frente).
+- `store`: Por fim, a pasta `store` conterá toda a parte de Redux e Redux Sagas, cuidará principalmente do compartilhamento de estádo, das regras de negócios e da resolução de possiveis problemas relacionados a side-effects.
 
-**Backend**
 
-- Node.Js
-- Ruby
-- Python
-- Elixir
-- C#
-- Go
 
-Para persisitir os dados utilize o meio que achar mais conveniente :).
+###Backend
 
-###  O que iremos avaliar
+**A estrutura do projeto está dividida da seguinte forma:**
+```
+ server
+│
+└─── src
+│   │
+│   │ + app.ts
+│   │ + index.tsx   
+│   │ 
+│   │
+│   └─── app    
+│       │   
+│       └─── common
+│       │   
+│       └─── config
+│       │   
+│       └─── controllers
+│       │   
+│       └─── middlewares
+│       │      
+│       └─── models
+│       │   
+│       └─── routes
+│       │   
+│       └─── utils
+│
+└─── __tests__
 
-- Modelagem de Dados
-- Domínio da Linguagem
-- Legibilidade do Código
-- Estrutura do Código
-- Organização do Código
-- Design Patterns
-- Manutenibilidade do Código
-- Testes Unitários e Cobertura de Testes
+```
+- `src`: Representa a pasta que terá todo o código importante da aplicação, incluindo lógica, confugurações do banco de dados e outros. Nela contém dois aquivos em especifico que valem a pena citar, o `App.tsx` e o `index.tsx` que basicamente contém toda a configuração inicial do nosso servidor.
+- `__tests__`: Representa a pasta que terá todos os testes de integração e unitários da aplicação.
+- `common`: Na pasta `common`, estão arquivos que contém uma lógica comum para toda ou boa parte da aplicação. Um exemplo disso aplicado ao Typescript é a criação de uma interface de crud, que basicamente todos os controllers terão, então basta extender essa interface criada e você terá uma padronização de código.
+- `config`: Nessa pasta, basicamente teremos todas as configurações de serviços externos da aplicação, como credenciais criação da intancia do mongoDB ou do AWS.
+- `controllers`: Essa pasta basicamente podemos ter toda a parte 'bruta' da aplicação, são os controllers que irão conter toda a regra de negócio e manipulará a requisição do usuário.
+- `middlewares`: Essa pasta é bem exclusiva, nela teremos todos os serviços que precisam estar checar a requisição antes dela chegar aos controllers. Um bom exemplo de um middleware é o de autenticação, sempre que uma requisição que necessita de autenticação é mandada para o servidor, o middleware de autenticação de encarrega de chegar as credenciais do usuário e assim manter a segurança dos serviços prestados penlo servidor.
+- `models`: Como o próprio nome sugere, na pasta `models` estará contido todos os modelos de dados representados na aplicação. Dito como modelo uma representação do banco de dados.
+- `routes`: A pasta `routes` conterá todas as rotas de serviços do servidor. Os arquivos contidos aqui serão responsaveis pela recepção da requisição do usuário e o direcionamento para o controller adequado.
+- `utils`: Por fim, a pasta `utils` conterá todos os arquivos utilitários que serão utilizados dentro da aplicação, geralmente nele são armazenados funções puras que tem um só propósito.
+
+## Resultado
+
+<Image src='https://imgur.com/TRcEoWh.png'>
+<Image src='https://imgur.com/T5UMSUH.png'>
+
+## Considerações finais
+
+- No geral, esse challenge me proporcionou mais uma chance de tentar mostrar os meus conhecimentos em um só projeto. Eu tentei adicionar um pouco de tudo que ja estudei e já apliquei, algumas coisas poderiam ser bem mais trabalhadas, como os testes por exemplo. Mas, por conta de algumas variante acabei deixando mais abstrato. Enfim, quero agradecer pelo excelente processo seletivo e espero que tenhamos uma outra oportunidade na próxima fase. Até mais! =D
+
+
+
+
+
