@@ -14,9 +14,9 @@ describe('Hero', () => {
     expect(response.status).toBe(200)
   })
 
-  it('Should find the heroes that contains id=5e6fb4b8cebeb71d50abd7a7', async () => {
+  it('Should find the heroes that contains id=5e72239b6d444c5857a5f94d', async () => {
     const token = await generateToken({ id: '5e6a502032e09a6ee8f1e248' })
-    const id = '5e6fb4b8cebeb71d50abd7a7'
+    const id = '5e72239b6d444c5857a5f94d'
     const response = await request(app)
       .get(`/heroes/${id}`)
       .set({ Authorization: `Bearer ${token}` })
