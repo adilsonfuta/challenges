@@ -12,7 +12,7 @@ A aplicação consistem em uma rede de cadastro (teste backend) e distribuição
 ```
 git clone https://github.com/wellingtonsa/challenges.git
 ```
-**Entre na pasta do projeto e execute o comando para instalação das dependências/libs do projeto**
+**Entre na pasta do projeto e execute o comando para instalação das dependências/libs**
 
 ```
 /* para o backend */
@@ -155,12 +155,12 @@ npm install // ou yarn install se preferir
 - [x] Autenticação
 - [x] Cadastre, edite, remova e liste herois
 - [x] Aloque automaticamente o heroi mais adequado quando uma nova ameaça surgir.
-- [x] Registre a desalocação de um heroi (entende-se por desalocação, o ato do heroi ja ter - derrotado a ameaça, depois dele ter sido alocado) (Como visto na imagem acima, essa feature é representada pela coluna status na table a de listagem de heróis).
-- [x] Exiba o histórico de ameaças junto com quem foi o responsável por impedir a catástrofe.
+- [x] (+ Plus) Registre a desalocação de um heroi (entende-se por desalocação, o ato do heroi ja ter - derrotado a ameaça, depois dele ter sido alocado) (Como visto na imagem acima, essa feature é representada pela coluna status na table a de listagem de heróis).
+- [x] (+ Plus) Exiba o histórico de ameaças junto com quem foi o responsável por impedir a catástrofe.
 
 ## Considerações finais
 
-- Eu sempre gostei de fazer challenges porque é uma forma de fazer uma autoanálise do meu conhecimento, podendo perceber meus pontos fracos/fortes e assim os melhorando. Então, primeiramente gostaria de agradecer a equipe da ZRP por ter me escolhido para a segunda fase desse processo seletivo e também parabenizar pelo mesmo. Existem algumas coisas que se eu tivesse mais tempo eu melhoraria, como por exemplo fazer testes mais menuciosos e bem planejados, ou adicionar algumas abordagens no frontend como o absolute path e storybooks. De qualquer forma, estou satisfeito com o que desenvolvi. Por fim, espero que curtam a aplicação e espero muito ter contato com vocês em um momento posterior. Até mais =D
+- Eu sempre gostei de fazer challenges porque é uma forma de fazer uma autoanálise do meu conhecimento, podendo perceber meus pontos fracos/fortes e assim melhora-los. Então, primeiramente gostaria de agradecer a equipe da ZRP por ter me escolhido para a segunda fase desse processo seletivo e também parabenizar pelo mesmo. Existem algumas coisas que se eu tivesse mais tempo eu melhoraria, como por exemplo fazer testes mais menuciosos e bem planejados, ou adicionar algumas abordagens no frontend como o absolute path e storybooks. De qualquer forma, estou satisfeito com o que desenvolvi. Por fim, espero que curtam a aplicação e espero muito ter contato com vocês em um momento posterior. Até mais =D
 
 
 
