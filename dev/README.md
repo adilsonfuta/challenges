@@ -28,6 +28,13 @@ npm install // ou yarn install se preferir
   - ``` yarn dev ``` - para executar o projeto
   - ``` yarn test ``` - para executar os testes (somente no backend)
 
+
+## Credênciais de acesso
+
+**Para acesso use as seguintes credênciais:**
+- Login: `admin@zrp.com`
+- Senha: `12345678`
+
 ## Principais ferramentas utillizadas
 
 ### Frontend
