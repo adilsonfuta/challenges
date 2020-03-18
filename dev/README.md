@@ -63,7 +63,7 @@ npm install // ou yarn install se preferir
 
 ## Estrutura do Projeto
 
-###Frontend
+### Frontend
 
 **A estrutura do projeto está dividida da seguinte forma:**
 ```
@@ -103,7 +103,7 @@ npm install // ou yarn install se preferir
 
 
 
-###Backend
+### Backend
 
 **A estrutura do projeto está dividida da seguinte forma:**
 ```
@@ -144,14 +144,23 @@ npm install // ou yarn install se preferir
 - `routes`: A pasta `routes` conterá todas as rotas de serviços do servidor. Os arquivos contidos aqui serão responsaveis pela recepção da requisição do usuário e o direcionamento para o controller adequado.
 - `utils`: Por fim, a pasta `utils` conterá todos os arquivos utilitários que serão utilizados dentro da aplicação, geralmente nele são armazenados funções puras que tem um só propósito.
 
+
+
 ## Resultado
 
 <Image src='https://imgur.com/TRcEoWh.png'>
 <Image src='https://imgur.com/T5UMSUH.png'>
 
+## Todo - Do que foi proposto ao que foi feito
+- [x] Autenticação
+- [x] Cadastre, edite, remova e liste herois
+- [x] Aloque automaticamente o heroi mais adequado quando uma nova ameaça surgir.
+- [x] Registre a desalocação de um heroi (entende-se por desalocação, o ato do heroi ja ter - derrotado a ameaça, depois dele ter sido alocado) (Como visto na imagem acima, essa feature é representada pela coluna status na table a de listagem de heróis).
+- [x] Exiba o histórico de ameaças junto com quem foi o responsável por impedir a catástrofe.
+
 ## Considerações finais
 
-- No geral, esse challenge me proporcionou mais uma chance de tentar mostrar os meus conhecimentos em um só projeto. Eu tentei adicionar um pouco de tudo que ja estudei e já apliquei, algumas coisas poderiam ser bem mais trabalhadas, como os testes por exemplo. Mas, por conta de algumas variante acabei deixando mais abstrato. Enfim, quero agradecer pelo excelente processo seletivo e espero que tenhamos uma outra oportunidade na próxima fase. Até mais! =D
+- Eu sempre gostei de fazer challenges porque é uma forma de fazer uma autoanálise do meu conhecimento, podendo perceber meus pontos fracos/fortes e assim os melhorando. Então, primeiramente gostaria de agradecer a equipe da ZRP por ter me escolhido para a segunda fase desse processo seletivo e também parabenizar pelo mesmo. Existem algumas coisas que se eu tivesse mais tempo eu melhoraria, como por exemplo fazer testes mais menuciosos e bem planejados, ou adicionar algumas abordagens no frontend como o absolute path e storybooks. De qualquer forma, estou satisfeito com o que desenvolvi. Por fim, espero que curtam a aplicação e espero muito ter contato com vocês em um momento posterior. Até mais =D
 
 
 
